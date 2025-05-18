@@ -10,7 +10,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"  # توکن ربات تلگرام رو اینجا قرار بده
+TOKEN = "7678289020:AAE_knd3yuxJbtZkzxmtIp03i4MkPBRyqqQ"  # توکن ربات تلگرام رو اینجا قرار بده
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("سلام! برای دریافت لیست فیلم‌ها دستور /movies را بفرستید.")
