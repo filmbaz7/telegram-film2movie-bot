@@ -1,5 +1,5 @@
 import logging
-from telegram import Update, Bot
+from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import requests
 from bs4 import BeautifulSoup
@@ -10,7 +10,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TOKEN = "7678289020:AAE_knd3yuxJbtZkzxmtIp03i4MkPBRyqqQ"  # توکن ربات تلگرام رو اینجا قرار بده
+TOKEN = "7678289020:AAE_knd3yuxJbtZkzxmtIp03i4MkPBRyqqQ"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("سلام! برای دریافت لیست فیلم‌ها دستور /movies را بفرستید.")
@@ -33,16 +33,13 @@ async def movies(update: Update, context: ContextTypes.DEFAULT_TYPE):
         link = title_tag.get("href") if title_tag else "#"
         img = item.find("img")
         img_url = img.get("src") if img else ""
-    results.append(f"🎬 {title}")
 
-{link}
-{img_url}
-------")
+        # ساخت پیام برای هر فیلم
+        message = f"🎬 {title}\n🔗 لینک: {link}\n🖼️ عکس: {img_url}\n------"
+        results.append(message)
     
     if results:
-        await update.message.reply_text("
-
-".join(results))
+        await update.message.reply_text("\n\n".join(results))
     else:
         await update.message.reply_text("متاسفانه هیچ فیلمی پیدا نشد.")
 
