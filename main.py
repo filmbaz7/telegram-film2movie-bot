@@ -33,7 +33,8 @@ async def movies(update: Update, context: ContextTypes.DEFAULT_TYPE):
         link = title_tag.get("href") if title_tag else "#"
         img = item.find("img")
         img_url = img.get("src") if img else ""
-        results.append(f"🎬 {title}
+    results.append(f"🎬 {title}")
+
 {link}
 {img_url}
 ------")
